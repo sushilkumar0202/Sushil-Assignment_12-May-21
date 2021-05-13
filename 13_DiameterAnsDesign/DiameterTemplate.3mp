@@ -1,0 +1,93 @@
+module DiameterTemplate
+{
+   import from DiameterMessage all;
+
+   template DHeader DHeader_t1:=
+	{
+	      version:= 1,
+ 		  messagelength1:= 0,
+          messagelength2:= 20+8+4+8+19+1+8+29+3+8+4,
+ 		  rpetrrrr:= 0,
+ 		  commandcode1:= 0,
+ 		  commandcode2:= 280,
+ 		  applicationid:= 0,
+ 		  hopbyhopid:= 45543,
+ 		  endtoendid:= 21234
+	}
+
+	template Resultcodeavp Resultcodeavp_t1:=
+	{
+	      aVPHeader:=
+		  {
+		      avpcode:= 268,
+ 		      vmprrrrr:= 64,
+			  avplength1:= 0,
+			  avplength2:= 8+4,
+			  vendorid:= omit
+		  },
+ 		  resultcodedata:= 2001
+	}
+
+	template Originhostavp Originhostavp_t1:=
+	{
+	      aVPHeader:=
+		  {
+		      avpcode:= 264,
+ 		      vmprrrrr:= 64,
+			  avplength1:= 0,
+			  avplength2:= 8+29,
+			  vendorid:= omit
+		  },
+ 		  originhostdata:=
+		  {
+		      Originhostdatapart:= "dratcloud.answer.3gppnetwork",//29
+ 			  pad1:= 0,
+ 			  pad2:= 0,
+			  pad3:= 0 
+          } //29+3
+	}
+
+    template Originrealmavp Originrealmavp_t1:=
+	{
+	      aVPHeader:=
+		  {
+		      avpcode:= 296,
+ 		      vmprrrrr:= 64,
+			  avplength1:= 0,
+			  avplength2:= 8+19,
+			  vendorid:= omit
+		  },
+ 		  originrealmdata:=
+		  {
+		      Originrealmdatapart:= "answer.3gppnetwork",//19
+ 			  pad1:= 0,
+ 			  pad2:= omit,
+			  pad3:= omit 
+          } //19+1
+	}
+	
+	template Originstateidavp Originstateidavp_t1:=
+	{
+	     aVPHeader:=
+		 {
+		    avpcode:= 278,
+ 		    vmprrrrr:= 64,
+			avplength1:= 0,
+			avplength2:= 8+4,
+			vendorid:= omit	
+		 },
+ 		 originstateiddata:= 4563 
+	}
+
+	template DevicewatchdogAns DevicewatchdogAns_t1:=
+	{
+	     dHeader:= DHeader_t1,
+ 		 resultcodeavp:= Resultcodeavp_t1,
+ 		 originhostavp:= Originhostavp_t1,
+ 		 originrealmavp:= Originrealmavp_t1,
+ 		 errormessageavp:= omit,
+ 		 failedavpavp:= omit,
+ 		 originstateidavp:= Originstateidavp_t1
+	}
+ 	
+}

@@ -1,0 +1,9 @@
+module PortConfig
+{
+    import from DiameterMessage all;
+    
+	type port dwaport message {in DevicewatchdogAns;}
+
+	type component dwacomp {port dwaport dwap;}
+
+}

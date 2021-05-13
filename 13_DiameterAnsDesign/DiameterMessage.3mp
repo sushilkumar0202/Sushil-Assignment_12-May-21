@@ -1,0 +1,99 @@
+module DiameterMessage
+{
+     type integer int8(0..255);//with {encode "Binary" variant "Rule8"};
+ 	 type integer int16(0..65535);//with {encode "Binary" variant "Rule16"};
+	 type integer int32(0..4294967295);//with {encode "Binary" variant "Rule32"};
+
+ 	 type record DHeader
+	 {
+	     int8 version,
+		 int8 messagelength1,
+         int16 messagelength2,
+		 int8 rpetrrrr,
+         int8 commandcode1,
+         int16 commandcode2,
+		 int32 applicationid,
+         int32 hopbyhopid,
+ 		 int32 endtoendid
+	 }
+	 
+	 type record AVPHeader
+	 {
+	     int32 avpcode,
+		 int8 vmprrrrr,
+         int8 avplength1,
+         int16 avplength2,
+		 int32 vendorid optional
+	 }
+
+	 type int32 Resultcodedata;
+
+	 type record Originhostdata
+	 {
+	     charstring Originhostdatapart,
+		 int8 pad1 optional,
+         int8 pad2 optional,
+		 int8 pad3 optional 		 
+	 }
+
+	 type record Originrealmdata
+	 {
+	     charstring Originrealmdatapart,
+		 int8 pad1 optional,
+         int8 pad2 optional,
+		 int8 pad3 optional  
+	 }
+
+     type int32 Originstateiddata;
+
+	 type charstring Errormessage;
+
+	 type charstring Failedavp;
+
+ 	 type record Resultcodeavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Resultcodedata resultcodedata
+	 } 
+
+	 type record Originhostavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Originhostdata originhostdata
+	 }
+
+     type record Originrealmavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Originrealmdata originrealmdata
+	 }
+	 
+	 type record Originstateidavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Originstateiddata originstateiddata
+	 }
+
+ 	 type record Errormessageavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Errormessage errormessage
+	 }
+	 
+	 type record Failedavpavp
+	 {
+	     AVPHeader aVPHeader,
+ 		 Failedavp failedavp
+	 } 
+	 
+	 type record DevicewatchdogAns
+	 {
+	     DHeader dHeader,
+		 Resultcodeavp resultcodeavp,
+		 Originhostavp originhostavp,
+         Originrealmavp originrealmavp,
+		 Errormessageavp errormessageavp optional,
+		 Failedavpavp failedavpavp optional,
+         Originstateidavp originstateidavp optional
+	 }   	 
+}

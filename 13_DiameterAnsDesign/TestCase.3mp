@@ -1,0 +1,16 @@
+module TestCase
+{
+    import from DiameterTemplate all;
+    import from PortConfig all;
+	
+	testcase dwadesign() runs on dwacomp
+	{
+	    dwap.receive(DevicewatchdogAns_t1);
+		setverdict(pass);
+	}	
+
+	control
+	{ 
+	    execute(dwadesign());
+	}
+}

@@ -1,0 +1,24 @@
+module CodecRule
+{
+    /*Rule8
+	{
+	   Length = "8 Bit",
+	   ByteOrder = "Big endian",
+	   Signed = false
+	}
+
+    Rule16
+	{
+	   Length = "16 Bit",
+	   ByteOrder = "Big endian",
+	   Signed = false
+	}
+	
+	Rule32
+	{
+	   Length = "32 Bit",
+	   ByteOrder = "Big endian",
+	   Signed = false
+	}*/
+ 
+}
