@@ -1,0 +1,8 @@
+module PortConfig
+{
+    import from GTPCResponseMessage all ;
+
+	type port GTPCPort message {in Echoresponse};
+
+	type component GTPCComp { port GTPCPort GTPCP};
+}

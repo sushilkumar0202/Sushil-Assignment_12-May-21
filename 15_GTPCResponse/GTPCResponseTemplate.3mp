@@ -1,0 +1,43 @@
+module GTPCResponseTemplate
+{
+    import from GTPCResponseMessage all ;
+
+	template Echoresponse Echoresponse_t1:=
+	{
+	    gtpcheader:=
+		{
+		    versionptsss:= 64,
+ 		    messagetype:= 2,
+			messagelength:= 4+5+10+17,
+			teid:= 0,
+			sequencenumber:= 1,
+			spare:= 0	
+		},
+ 	    recovery:=
+		{
+		    type1:= 3,
+ 		    length1:= 1,
+ 		    spareinstance1:= 0,
+ 		    restartcounter:= 125	
+		},
+        cause:=
+		{
+		    type2:= 2,
+ 		    length2:= 2,
+			spareinstance2:= 0,
+			causevalue:= 16,
+			sparecs:= 0,
+ 		    typeoftheoffendingIE:= 0,
+ 		    length3:= 0,
+ 		    spareinstance3:= 0
+		},
+ 	    privateextension:=
+		{
+		    type3:= 255,
+ 		    length4:= 2+11,
+			spareinstance4:= 0,
+			enterpriseID:= 10415,
+			proprietaryvalue:= "w3.ibm.com"	
+		}
+	}
+}

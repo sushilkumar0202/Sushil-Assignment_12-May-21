@@ -1,0 +1,17 @@
+module TestCase
+{
+     import from GTPCResponseTemplate all ;
+ 	 import from PortConfig all ;
+
+	 testcase GTPCResponseTest() runs on GTPCComp
+	 {
+	     GTPCP.receive(Echoresponse_t1);
+		 setverdict(pass);
+	 }
+
+	 control
+	 {
+	     execute(GTPCResponseTest());
+	 }
+
+}

@@ -1,0 +1,53 @@
+module GTPCResponseMessage
+{   
+    type integer int8(0..255);// with {encode "Binary" variant "Rule8"};
+    type integer int16(0..65535);// with {encode "Binary" variant "Rule16"};
+    type integer int32(0..4294967295);// with {encode "Binary" variant "Rule32"};	
+
+    type record GTPCHeader
+	{
+	    int8 versionptsss,
+		int8 messagetype,
+		int16 messagelength,
+		int32 teid,
+		int8 sequencenumber,
+		int8 spare
+	}
+
+	type record Recovery
+	{
+	    int8 type1,
+		int16 length1,
+		int8 spareinstance1,
+		int8 restartcounter
+	}
+	
+	type record Cause
+	{
+	    int8 type2,
+		int16 length2,
+		int8 spareinstance2,
+		int8 causevalue,
+		int8 sparecs,
+		int8 typeoftheoffendingIE,
+        int16 length3,
+        int8 spareinstance3 		
+	}
+
+	type record Privateextension
+	{
+	    int8 type3,
+		int16 length4,
+		int8 spareinstance4,
+		int16 enterpriseID,
+		charstring proprietaryvalue
+	}
+
+	type record Echoresponse
+	{
+	    GTPCHeader gtpcheader,
+	    Recovery recovery,
+ 	    Cause cause optional,
+        Privateextension privateextension optional
+	}
+}
