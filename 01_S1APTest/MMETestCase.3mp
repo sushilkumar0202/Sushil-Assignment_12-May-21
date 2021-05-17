@@ -1,0 +1,24 @@
+module MMETestCase
+{
+   import from S1APTemplate all ;
+   import from ENBConfig all ; 
+   
+   testcase MMETest() runs on MMEComp
+   {
+      MMEP.send(S1AP_PDU_S1SETUP_REQUEST_S_T1);
+	  setverdict(pass);
+   }
+
+   testcase MMETest1() runs on MMEComp
+   {
+      MMEP.send(S1AP_PDU_S1SETUP_REQUEST_S_T2);
+	  setverdict(pass);
+   } 
+
+   control
+   {
+      //execute(MMETest());
+ 	  execute(MMETest1()); 
+   }
+
+}

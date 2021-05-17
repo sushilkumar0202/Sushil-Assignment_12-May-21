@@ -1,0 +1,159 @@
+module S1APTemplate
+{
+      import from S1AP_PDU_Descriptions language "ASN.1:1997" all ;
+ 	  import from S1AP_PDU_Contents language "ASN.1:1997" all ;
+	  import from S1AP_IEs language "ASN.1:1997" all ;
+	  import from S1AP_Containers language "ASN.1:1997" all ;
+	  import from S1AP_Constants language "ASN.1:1997" all ;
+	  import from S1AP_CommonDataTypes language "ASN.1:1997" all ;
+	  
+	  template S1AP_PDU S1AP_PDU_S1SETUP_REQUEST_S_T1:= 
+	  {
+	     initiatingMessage:=
+		 {
+		     procedureCode:= id_S1Setup,
+ 			 criticality:= reject,
+ 			 value_:=
+			 {
+			     S1SetupRequest:= 
+				 {
+				    protocolIEs:=
+					{ 
+					  {
+					     id:= id_Global_ENB_ID,
+ 					     criticality:= reject,
+ 					     value_:= 
+					     {
+						    Global_ENB_ID:=
+							{
+					           PLMNidentity:= '405426'O,
+ 						       eNB_ID:= 
+							   {
+							      macroENB_ID:= '10011001100110011111'B
+                               },
+ 						       iE_Extensions:= omit
+							}   
+					     }
+					  }
+					} 
+				 }
+			 } 
+		 }
+	  }
+
+  	 template S1AP_PDU S1AP_PDU_S1SETUP_REQUEST_S_T2:= 
+	  {
+	     initiatingMessage:=
+		 {
+		     procedureCode:= id_S1Setup,
+ 			 criticality:= reject,
+ 			 value_:=
+			 {
+			     S1SetupRequest:= 
+				 {
+				    protocolIEs:=
+					{ 
+					  {
+					     id:= id_Global_ENB_ID,
+ 					     criticality:= reject,
+ 					     value_:= 
+					     {
+						    Global_ENB_ID:=
+							{
+					           PLMNidentity:= '405426'O,
+ 						       eNB_ID:= 
+							   {
+							      macroENB_ID:= '10011001100110011111'B,
+                               },
+ 						       iE_Extensions:= omit
+							}   
+					     }
+					  }
+                      {
+					     id:= id_eNBname,
+ 					     criticality:= ignore,
+ 					     value_:= 
+						 {    
+						     ENBname:= "GHANTAGHAR_ENB"
+						 }	  
+					  }
+                   } 
+				 }
+			 } 
+		 }
+	  }
+	  
+	  template S1AP_PDU S1AP_PDU_S1SETUP_REQUEST_S_T3:= 
+	  {
+	     initiatingMessage:=
+		 {
+		     procedureCode:= id_S1Setup,
+ 			 criticality:= reject,
+ 			 value_:=
+			 {
+			     S1SetupRequest:= 
+				 {
+				    protocolIEs:=
+					{ 
+					  {
+					     id:= id_Global_ENB_ID,
+ 					     criticality:= reject,
+ 					     value_:= 
+					     {
+						    Global_ENB_ID:=
+							{
+					           PLMNidentity:= '405426'O,
+ 						       eNB_ID:= 
+							   {
+							      macroENB_ID:= '10011001100110011111'B
+                               },
+ 						       iE_Extensions:= omit
+							}   
+					     }
+					  }
+                      {
+					     id:= id_eNBname,
+ 					     criticality:= ignore,
+ 					     value_:= 
+						 {    
+						     ENBname:= "GHANTAGHAR_ENB"
+						 }	  
+					  }
+                  
+                      {
+					     id:= id_SupportedTAs,
+ 					     criticality:= reject,
+ 					     value_:= 
+						 {
+						    SupportedTAs:=
+							{
+							    SupportedTAs-Item:=
+								{
+								    tAC:= '1234'O,
+ 								    broadcastPLMNs:= '405426'O,
+ 								    iE-Extensions:= omit 	
+								}
+							    {
+								    tAC:= '1235'O,
+ 								    broadcastPLMNs:= '405426'O,
+ 								    iE-Extensions:= omit 	
+								}
+							} 
+						 },
+					     {
+						      id:= id_DefaultPagingDRX,
+ 					          criticality:= ignore,
+ 					          value_:=
+							  {
+							      PagingDRX:= v128
+							  }
+						 }
+					  
+					  
+					  }
+				   } 
+				 }
+			 } 
+		 }
+	  }  
+}
